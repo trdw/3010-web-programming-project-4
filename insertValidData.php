@@ -12,7 +12,6 @@
                 ID INT AUTO_INCREMENT,
                 userName varchar(255) NOT NULL,
                 password varchar(255) NOT NULL,
-                passwordRepeat varchar(255) NOT NULL,
                 firstName varchar(255) NOT NULL,
                 lastName varchar(255) NOT NULL,
                 email varchar(255) NOT NULL,
@@ -29,28 +28,51 @@
 
 
 
-//			$sql = $conn->prepare("INSERT INTO registration
-//            (userName,
-//            password,
-//            passwordRepeat,
-//            firstName,
-//            lastName,
-//            email,
-//            phone,
-//            birth,
-//            address1,
-//            address2,
-//            city,
-//            state,
-//            zip,
-//            gender,
-//            maritalStatus)
-//			VALUES (:userName, '', '', '', :website,
-//			'', :comment, '', '', :email, :gender,
-//			'', CURDATE())");
-//			$sql->bindParam(':userName', $regForm["userName"][0]);
-//
-//			$sql->execute();
+			$sql = $conn->prepare("INSERT INTO registration
+            (userName,
+            password,
+            firstName,
+            lastName,
+            email,
+            phone,
+            birth,
+            address1,
+            address2,
+            city,
+            state,
+            zip,
+            gender,
+            maritalStatus)
+			VALUES (:userName,
+			:password,
+            :firstName,
+            :lastName,
+            :email,
+            :phone,
+            :birth,
+            :address1,
+            :address2,
+            :city,
+            :state,
+            :zip,
+            :gender,
+            :maritalStatus )");
+			$sql->bindParam(':userName', $regForm["userName"][2]);
+            $sql->bindParam(':password', $regForm["password"][2]);
+            $sql->bindParam(':firstName', $regForm["firstName"][2]);
+            $sql->bindParam(':lastName', $regForm["lastName"][2]);
+            $sql->bindParam(':email', $regForm["email"][2]);
+            $sql->bindParam(':phone', $regForm["phone"][2]);
+            $sql->bindParam(':birth', $regForm["birth"][2]);
+            $sql->bindParam(':address1', $regForm["address1"][2]);
+            $sql->bindParam(':address2', $regForm["address2"][2]);
+            $sql->bindParam(':city', $regForm["city"][2]);
+            $sql->bindParam(':state', $regForm["state"][2]);
+            $sql->bindParam(':zip', $regForm["zip"][2]);
+            $sql->bindParam(':gender', $regForm["gender"][2]);
+            $sql->bindParam(':maritalStatus', $regForm["maritalStatus"][2]);
+
+			$sql->execute();
 			
 			$last_id = $conn->lastInsertId();
 			$_SESSION["last_id"] = "$last_id";

@@ -14,7 +14,9 @@
 <body>
 <?php
     session_start();
-    include "validation.php";?>
+    include "validation.php";
+    include 'insertValidData.php';
+?>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -30,7 +32,7 @@
             <p><a href="registration.php">Registration</a></p>
             <p><a href="animations.html">Animations</a></p>
         </div>
-        <form id="registrationForm" method="POST" novalidate action="confirmation.php">
+        <form id="registrationForm" method="POST" novalidate action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 text-left">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6">
@@ -156,8 +158,6 @@
         <p><a href="https://en.wikipedia.org/wiki/Dobermann">Dobermann</a></p>
     </div>
 </footer>
-<?php
-    include 'insertValidData.php';
-?>
+
 </body>
 </html>

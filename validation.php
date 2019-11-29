@@ -37,7 +37,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
             if (strlen($regForm[$key][2]) < 6 || strlen($regForm[$key][2]) > 30) {
                 errorize($key);
             } else {
-                validize($key);
+                try {
+                    $conn = new PDO("mysql:host=localhost",
+                        "root", "");
+                    // set the PDO error mode to exception
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $conn->exec ("CREATE DATABASE IF NOT EXISTS dogpeople");
+                    $conn->exec ("use dogpeople");
+                    $result = $conn->exec ("CREATE TABLE IF NOT EXISTS registration (
+                        ID INT AUTO_INCREMENT,
+                        userName varchar(255) NOT NULL,
+                        password varchar(255) NOT NULL,
+                        firstName varchar(255) NOT NULL,
+                        lastName varchar(255) NOT NULL,
+                        email varchar(255) NOT NULL,
+                        phone varchar(255) NOT NULL,
+                        birth date,
+                        address1 varchar(255) NOT NULL,
+                        address2 varchar(255) NOT NULL,
+                        city varchar(255) NOT NULL,
+                        state varchar(255) NOT NULL,
+                        zip varchar(255) NOT NULL,
+                        gender varchar(255) NOT NULL,
+                        maritalStatus varchar(255) NOT NULL,
+                        PRIMARY KEY (ID))");
+                    $sql = $conn->prepare("SELECT ID from registration where userName = :userName");
+                    $sql->bindParam(':userName',$regForm["userName"][2]);
+                    //if ( $sql->execute() === FALSE) {
+                    if (TRUE) {
+                        validize($key);
+                    } else {
+                        $regForm[$key][3] = "Great minds think alike! That user name is already taken.";
+                        errorize($key);
+                    }
+                } catch(PDOException $e) {
+                    echo "Connection failed: " . $e->getMessage();
+                } finally {
+                    $conn = null;
+                }
+
             }
         }
 

@@ -63,12 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
                         PRIMARY KEY (ID))");
                     $sql = $conn->prepare("SELECT ID from registration where userName = :userName");
                     $sql->bindParam(':userName',$regForm["userName"][2]);
-                    //if ( $sql->execute() === FALSE) {
-                    if (TRUE) {
+                    $sql->execute();
+                    if ( empty($sql->fetch())) {
                         validize($key);
                     } else {
-                        $regForm[$key][3] = "Great minds think alike! That user name is already taken.";
                         errorize($key);
+                        $regForm[$key][3] = "Great minds think alike! That user name is already taken.";
                     }
                 } catch(PDOException $e) {
                     echo "Connection failed: " . $e->getMessage();

@@ -1,0 +1,94 @@
+/* Duncan Werner CS 3010 Project 3 */
+/* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+		margin-bottom: 0;
+		border-radius: 0;
+    }
+	.form-group {
+		height: 84px;
+	}
+	#logo {
+		height: 100px;
+	}
+	#dogs {
+		max-height: 500px;
+		width: 100%;
+		object-fit: scale-down;
+	}
+	#indexcontent {
+		padding-bottom: 15px;
+	}
+	#animationsBox {
+		max-height: 500px;
+		background-color: #000000;
+		overflow: hidden;
+	}
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+        overflow: hidden;
+    }	
+    #bone {
+		animation: rotateBone 10s linear 0s infinite normal;	
+		-moz-: rotateBone 10s linear 0s infinite normal;	
+		-webkit-: rotateBone 10s linear 0s infinite normal;	
+		-o-: rotateBone 10s linear 0s infinite normal;						
+		height: 100%;
+		object-fit: scale-down;		
+	}
+	@keyframes rotateBone {
+		from {transform: rotate(0deg);}
+		to {transform: rotate(359deg);}
+	}
+	@-webkit-keyframes rotateBone {
+		from {transform: rotate(0deg);}
+		to {transform: rotate(359deg);}
+	}
+	@-moz-keyframes rotateBone {
+		from {transform: rotate(0deg);}
+		to {transform: rotate(359deg);}
+	}
+	@-o-keyframes rotateBone {
+		from {transform: rotate(0deg);}
+		to {transform: rotate(359deg);}
+	}
+    /* Set gray background color and 100% height */
+    .sidenav {
+		padding-top: 20px;
+		background-color: #f1f1f1;
+		height: 100%;
+        padding-bottom: 5000px;
+        margin-bottom: -5000px;		
+    }
+    .sidenav p {
+		margin-bottom: 15px;
+	}
+    /* Set dark background color, white text and some padding */
+    footer {
+		background-color: #555;
+		color: white;
+		padding: 15px;
+    }
+    footer a {
+		color: white;		
+	}
+	footer a:hover {
+		color: pink;
+	}
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 787px) {
+		.sidenav {
+			height: auto;
+			padding: 15px;
+			margin: 0px;
+		}
+		.row.content {height:auto;} 
+		#logo {
+			height: 50px;
+		}
+		#dogs {
+			max-height: 300px;
+		}
+		#bone {
+			max-height: 300px;
+		}
+    }

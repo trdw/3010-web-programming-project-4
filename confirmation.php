@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Duncan Werner CS 3010 Project 3 -->
+<!-- Duncan Werner CS 3010 Project 4 -->
 <html lang="en">
 <head>
 	<title>Dogs are great</title>
@@ -11,7 +11,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<?php
+include 'selectUserData.php';
+?>
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -31,41 +33,41 @@
 			<p class="text-left">Thank you for registering!</p>
             <p class="text-left">
                 User Name:</br>
-                <?php echo $_POST["userName"];?>
+                <?php echo $assocArray["userName"];?>
             </p>
             <p class="text-left">
                 Name:</br>
-                <?php echo $_POST["firstName"] . " " . $_POST["lastName"];?>
+                <?php echo $assocArray["firstName"] . " " . $assocArray["lastName"];?>
             </p>
             <p class="text-left">
                 Email:</br>
-                <?php echo $_POST["email"];?>
+                <?php echo $assocArray["email"];?>
             </p>
             <p class="text-left">
                 Phone:</br>
-                <?php echo $_POST["phone"];?>
+                <?php echo $assocArray["phone"];?>
             </p>
             <p class="text-left">
                 Address:</br>
-                <?php echo $_POST["address1"] . "</br>";
-                if (!empty($_POST["address2"])) {
-                    echo $_POST["address2"] . "</br>";
+                <?php echo $assocArray["address1"] . "</br>";
+                if (!empty($assocArray["address2"])) {
+                    echo $assocArray["address2"] . "</br>";
                 }
-                echo $_POST["city"] . ", " . $_POST["state"] . " " . $_POST["zip"]?>
+                echo $assocArray["city"] . ", " . $assocArray["state"] . " " . $assocArray["zip"]?>
             </p>
             <p class="text-left">
                 Gender:</br>
-                <?php echo $_POST["gender"];?>
+                <?php echo $assocArray["gender"];?>
             </p>
             <p class="text-left">
                 Birthday:</br>
-                <?php echo substr($_POST["birth"], 5, 2) . "/" .
-                substr($_POST["birth"], 8, 2) . "/" .
-                substr($_POST["birth"], 0, 4);?>
+                <?php echo substr($assocArray["birth"], 5, 2) . "/" .
+                substr($assocArray["birth"], 8, 2) . "/" .
+                substr($assocArray["birth"], 0, 4);?>
             </p>
             <p class="text-left">
                 Marital Status:</br>
-                <?php echo $_POST["maritalStatus"];?>
+                <?php echo $assocArray["maritalStatus"];?>
             </p>
 
 		</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Duncan Werner CS 3010 Project 3 -->
+<!-- Duncan Werner CS 3010 Project 4 -->
 <html lang="en">
 <head>
     <title>Dogs are great</title>
@@ -12,7 +12,9 @@
     <script src="registration.js"></script>
 </head>
 <body>
-<?php include "validation.php";?>
+<?php
+    session_start();
+    include "validation.php";?>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -28,7 +30,7 @@
             <p><a href="registration.php">Registration</a></p>
             <p><a href="animations.html">Animations</a></p>
         </div>
-        <form id="registrationForm" method="POST" novalidate action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <form id="registrationForm" method="POST" novalidate action="confirmation.php">
             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 text-left">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6">
@@ -127,7 +129,7 @@
                         </div>
                         <div id="buttonDiv" class="form-group">
                             <input id="submitbutton" type="submit" class="btn btn-success" name="submit" value="Submit" onclick="checkInput();"/>
-                            <input type="submit" class="btn btn-info" name="reset" value="Reset" onclick="resetForm();"/>
+                            <input type="reset" class="btn btn-info" name="reset" value="Reset" onclick="resetForm();"/>
                         </div>
                     </div>
                 </div>

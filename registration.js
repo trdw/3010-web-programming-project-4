@@ -15,6 +15,7 @@ function checkInput() {
     checkUserName() &&
     checkZip()) {
         document.getElementById("submitbutton").disabled = false;
+
     } else {
         document.getElementById("submitbutton").disabled = "disabled";
     }
